@@ -14,7 +14,7 @@ x_pos_unclamped: int = 0 #temp valuable that checks new position and helps to cl
 x_pos_clamped:int = 0 #sets UFO:s clamped position
 
 min_x: int = 0 #minimum x-value that ufo can go to.
-max_x: int = 128 - (8*3) #maximum x-value that ufo can go to. 128 meaning full width of the screen. - offset the ufo(8px char) (3 chars)
+max_x: int = 128 - (8*3) #maximum x-value that ufo can go to. 128 meaning full width of the screen. - offset the ufo(8px per character) (3 chars)
 
 ufo_speed:int = 8 #how quickly ufo travels through screen
 
@@ -30,10 +30,10 @@ while True:
         x_pos_clamped = x_pos_unclamped #if 'new_pos_x' is within min-max values set it's value to it.
         
     
-    if(sw0.value() == 0): #if sw1 button pressed add 'ufo_speed' to x_new_pos
+    if(sw0.value() == 0): #if sw0 button pressed add 'ufo_speed' to x_new_pos
         x_pos_unclamped += ufo_speed
         
-    if(sw2.value() == 0): #if sw1 button pressed add 'ufo_speed' to x_new_pos
+    if(sw2.value() == 0): #if sw2 button pressed add 'ufo_speed' to x_new_pos
         x_pos_unclamped -= ufo_speed
     
     oled.text('<=>', x_pos_clamped, 32, 1) #set ufo with xpos of 'x_pos' y: 32 and 1 means active pixels.
